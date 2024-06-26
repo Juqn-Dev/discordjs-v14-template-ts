@@ -18,10 +18,10 @@ const event: BotEvent = {
         if (message.channel.type !== ChannelType.GuildText) return;
 
         let args = message.content.substring(prefix.length).split(" ")
-        let command = message.client.commands.get(args[0])
+        let command = message.client.commands.get(args[0].toLowerCase())
 
         if (!command) {
-            let commandFromAlias = message.client.commands.find((command) => command.aliases.includes(args[0]))
+            let commandFromAlias = message.client.commands.find((command) => command.aliases.includes(args[0].toLowerCase()))
             if (commandFromAlias) command = commandFromAlias
             else return;
         }

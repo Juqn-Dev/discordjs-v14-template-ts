@@ -23,7 +23,7 @@ module.exports = (client : Client) => {
         if (!file.endsWith(".js")) return;
         let command : Command = require(`${commandsDir}/${file}`).default
         commands.push(command)
-        client.commands.set(command.name, command)
+        client.commands.set(command.name.toLowerCase(), command)
     })
 
     const rest = new REST({version: "10"}).setToken(process.env.TOKEN);
